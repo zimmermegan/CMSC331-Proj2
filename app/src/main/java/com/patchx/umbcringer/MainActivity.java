@@ -2,6 +2,7 @@ package com.patchx.umbcringer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -12,17 +13,25 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.ToggleButton;
+import com.patchx.umbcringer.Section;
 
 
 public class MainActivity extends Activity {
 
-    private int ringerMode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+
+        Intent intent = new Intent(this, Ringer.class);
+        startActivity(intent);
+
+        //ringer = new Ringer(savedInstanceState);
+
+
+
        /*
         ToggleButton tb = (ToggleButton) this.findViewById(R.id.toggle1);
 
@@ -42,7 +51,7 @@ public class MainActivity extends Activity {
                 break;
         }
 */
-        PopulateButtons();
+        //ringer.PopulateButtons();
     }
 
 
@@ -72,78 +81,19 @@ public class MainActivity extends Activity {
         // Is the toggle on?
         boolean on = ((ToggleButton) view).isChecked();
         AudioManager audioManager = (AudioManager) getBaseContext().getSystemService(Context.AUDIO_SERVICE);
+
          //((ToggleButton) view).setText("Help");
         //boolean on = (ToggleButton) findViewById(R.id.toggle1).isChecked();
+        /*
         if (on) {
-           GoSilent();
-        } else if (ringerMode == AudioManager.RINGER_MODE_NORMAL) {
-                GoNormal();
+           //GoSilent();
+        } else if (ringer.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+                //GoNormal();
             }
         else {
-                GoVibrate();
-        }
+                //GoVibrate();
+        }*/
     }
-
-
-
-    public void GoSilent(){
-        AudioManager audioManager= (AudioManager) getBaseContext().getSystemService(Context.AUDIO_SERVICE);
-
-        //ToggleButton tb = (ToggleButton) this.findViewById(R.id.toggle1);
-
-        switch( audioManager.getRingerMode() ){
-            case AudioManager.RINGER_MODE_NORMAL:
-          //      tb.setText("Turn on to normal");
-                ringerMode = AudioManager.RINGER_MODE_NORMAL;
-                break;
-            case AudioManager.RINGER_MODE_VIBRATE:
-            //    tb.setText("Turn on to vibrate");
-                ringerMode = AudioManager.RINGER_MODE_VIBRATE;
-                break;
-        }
-
-        audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-    }
-
-    public void GoNormal(){
-        //ToggleButton tb = (ToggleButton) this.findViewById(R.id.toggle1);
-        //tb.setText("Make Silent");
-
-        AudioManager audioManager= (AudioManager) getBaseContext().getSystemService(Context.AUDIO_SERVICE);
-        audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-    }
-    public void GoVibrate(){
-        //ToggleButton tb = (ToggleButton) this.findViewById(R.id.toggle1);
-        //tb.setText("Make Silent");
-        AudioManager audioManager= (AudioManager) getBaseContext().getSystemService(Context.AUDIO_SERVICE);
-        audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-    }
-
-
-    public void PopulateButtons(){
-
-        ViewGroup mylayout = (ViewGroup) findViewById(R.id.mainlayout);
-
-        int i = 1;
-        for (i = 1; i <= 4; i++) {
-
-            ToggleButton tb = new ToggleButton(this);
-
-            tb.setChecked(true);
-            tb.setText("Course - " + i + "\nOn");
-            tb.setTextOn("Course - " + i + "\nOn");
-            tb.setTextOff("Course - " + i + "\nOff");
-
-            tb.setLayoutParams(new AbsListView.LayoutParams(
-                    AbsListView.LayoutParams.FILL_PARENT,
-                    AbsListView.LayoutParams.WRAP_CONTENT));
-
-            mylayout.addView(tb);
-
-        }
-
-        //tb1.layout();
-
 
     }
 
@@ -157,4 +107,3 @@ public class MainActivity extends Activity {
 
 
 
-}

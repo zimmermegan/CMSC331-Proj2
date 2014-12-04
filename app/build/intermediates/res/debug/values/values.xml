@@ -13,6 +13,7 @@
     <string name="activity_splash">UMBC Ringer</string>
     <string name="app_name">UMBC Ringer</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_ringer">Ringer</string>
     <string name="toggleButton">Ringer</string>
     <!-- From: file:/home/frank/Dropbox/projects/Android/UMBCRinger/app/src/main/res/values/styles.xml -->
     <eat-comment/>
@@ -20,5 +21,6 @@
         <!-- Customize your theme here. -->
 
         <item name="android:buttonStyleToggle">@android:style/Widget.Button.Toggle</item>
+
     </style>
 </resources>

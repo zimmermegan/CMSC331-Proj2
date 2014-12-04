@@ -9,5 +9,6 @@
     <string name="Frank">Frank Zastawnik</string>
     <string name="Esther">Esther Ho</string>
     <string name="Grace">Grace Chandler</string>
+    <string name="title_activity_ringer">Ringer</string>
 
 </resources>

@@ -12,15 +12,7 @@
     android:id="@+id/mainlayout">
 
 
-    <ToggleButton
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textOn="Turn Ringer Off"
-        android:textOff="Turn Ringer On"
-        android:id="@+id/toggle1"
-        android:onClick="onToggleClicked"
 
-        style="@android:style/Widget.Button.Toggle" />
 
 
 

@@ -22,13 +22,14 @@ public final class R {
         public static final int splash=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f080006;
+        public static final int action_settings=0x7f080007;
         public static final int mainlayout=0x7f080000;
-        public static final int textView=0x7f080002;
-        public static final int textView2=0x7f080003;
-        public static final int textView3=0x7f080004;
-        public static final int textView4=0x7f080005;
-        public static final int toggle1=0x7f080001;
+        public static final int ringlayout=0x7f080002;
+        public static final int scroll=0x7f080001;
+        public static final int textView=0x7f080003;
+        public static final int textView2=0x7f080004;
+        public static final int textView3=0x7f080005;
+        public static final int textView4=0x7f080006;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -51,6 +52,11 @@ public final class R {
         public static final int toggleButton=0x7f050008;
     }
     public static final class style {
+        /**  Customize your theme here. 
+
+        <item name="android:buttonStyleToggle">@android:style/Widget.Button.Toggle</item>
+        
+         */
         public static final int AppTheme=0x7f060000;
     }
 }

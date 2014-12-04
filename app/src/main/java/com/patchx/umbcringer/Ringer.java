@@ -1,8 +1,11 @@
 package com.patchx.umbcringer;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,8 +16,10 @@ import android.widget.AbsListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import com.patchx.umbcringer.Section;
+import com.patchx.umbcringer.AlarmReceiver;
 
 import java.lang.reflect.Array;
+import java.util.GregorianCalendar;
 
 //import java.util.ArrayList;
 
@@ -30,10 +35,11 @@ public class Ringer extends Activity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_ringer);
 
         GetSections();
         PopulateButtons();
+        scheduleAlarm();
     }
 
 
@@ -66,13 +72,9 @@ public class Ringer extends Activity  {
 
 
 
-
-
-
-
     public void PopulateButtons() {
 
-        ViewGroup mylayout = (ViewGroup) findViewById(R.id.mainlayout);
+        ViewGroup mylayout = (ViewGroup) findViewById(R.id.ringlayout);
 
         int i = 1;
         for (i = 0; i < 4; i++) {
@@ -93,6 +95,7 @@ public class Ringer extends Activity  {
             tb.setText(texty + "\nOn");
             tb.setTextOn(texty + "\nOn");
             tb.setTextOff(texty + "\nOff");
+            tb.setTextColor(Color.WHITE);
             tb.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -114,7 +117,6 @@ public class Ringer extends Activity  {
         }
                                 });
 
-
             tb.setLayoutParams(new AbsListView.LayoutParams(
                     AbsListView.LayoutParams.FILL_PARENT,
                     AbsListView.LayoutParams.WRAP_CONTENT));
@@ -123,7 +125,7 @@ public class Ringer extends Activity  {
 
         }
 
-        //tb1.layout();
+
     }
 
     private void GetSections(){
@@ -244,7 +246,18 @@ public class Ringer extends Activity  {
     }
 
 
+private void scheduleAlarm(){
+    long time =  new GregorianCalendar().getTimeInMillis()+ 10*1000;
+    Intent intentAlarm = new Intent(this, AlarmReceiver.class);
 
+    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+    alarmManager.set(AlarmManager.RTC_WAKEUP,time,
+            PendingIntent.getBroadcast(this, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+
+    Toast.makeText(this, "Alarm Scheduled", Toast.LENGTH_LONG).show();
+
+}
 
 
 

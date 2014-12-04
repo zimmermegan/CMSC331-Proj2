@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="21" />
+    //Permissions
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -23,15 +25,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        //Main activity
         <activity
             android:name="com.patchx.umbcringer.MainActivity"
             android:label="@string/app_name"
             android:noHistory="true" >
         </activity>
+        //Ringer
         <activity
             android:name="com.patchx.umbcringer.Ringer"
             android:label="@string/title_activity_ringer" >
         </activity>
+
+        <receiver android:name="com.patchx.umbcringer.AlarmReceiver" />
     </application>
 
 </manifest>

@@ -19,8 +19,9 @@
     <eat-comment/>
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-
+        <!--
         <item name="android:buttonStyleToggle">@android:style/Widget.Button.Toggle</item>
+        -->
 
     </style>
 </resources>

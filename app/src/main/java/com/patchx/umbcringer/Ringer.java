@@ -249,7 +249,7 @@ public class Ringer extends Activity  {
 private void scheduleAlarm(){
     long time =  new GregorianCalendar().getTimeInMillis()+ 10*1000;
     Intent intentAlarm = new Intent(this, AlarmReceiver.class);
-
+    intentAlarm.putExtra("blah", "yep");
     AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
     alarmManager.set(AlarmManager.RTC_WAKEUP,time,

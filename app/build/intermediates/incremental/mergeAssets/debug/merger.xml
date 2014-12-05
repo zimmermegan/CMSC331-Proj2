@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/home/frank/Dropbox/projects/Android/UMBCRinger/app/src/main/assets"/></dataSet><dataSet config="debug"><source path="/home/frank/Dropbox/projects/Android/UMBCRinger/app/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/gracekathrynchandler/UBM-MetagenomicsProject/git/CMSC331-Proj2/app/src/main/assets"/></dataSet><dataSet config="debug"><source path="/Users/gracekathrynchandler/UBM-MetagenomicsProject/git/CMSC331-Proj2/app/src/debug/assets"/></dataSet></merger>

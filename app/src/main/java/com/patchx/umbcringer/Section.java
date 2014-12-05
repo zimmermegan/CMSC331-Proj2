@@ -1,11 +1,9 @@
 package com.patchx.umbcringer;
 
 
-/**
- * Created by frank on 12/3/14.
- */
+
 public class Section {
-    private String classNumber;
+    private int classNumber;
     private String sectionNumber;
     private String subject;
     private String courseNumber;
@@ -34,11 +32,11 @@ public class Section {
         }
     }
 
-    public String getClassNumber() {
+    public int getClassNumber() {
         return classNumber;
     }
 
-    public void setClassNumber(String classNumber) {
+    public void setClassNumber(int classNumber) {
         this.classNumber = classNumber;
     }
 
@@ -187,6 +185,14 @@ public class Section {
         return timey;
 
 
+    }
+
+    public int getStartID(int day){
+        return (day * 10000 + 1000 +classNumber);
+    }
+
+    public int getEndID(int day){
+        return (day * 10000 + classNumber);
     }
 
 }

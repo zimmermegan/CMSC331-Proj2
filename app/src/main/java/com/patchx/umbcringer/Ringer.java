@@ -15,10 +15,13 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-import com.patchx.umbcringer.Section;
-import com.patchx.umbcringer.AlarmReceiver;
+//import com.patchx.umbcringer.Section;
+//import com.patchx.umbcringer.AlarmReceiver;
 
-import java.lang.reflect.Array;
+//import java.lang.reflect.Array;
+import java.util.Calendar;
+
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 //import java.util.ArrayList;
@@ -39,7 +42,13 @@ public class Ringer extends Activity  {
 
         GetSections();
         PopulateButtons();
-        scheduleAlarm();
+
+        //scheduleAlarm(2, 6, 1, 11, 42);
+
+
+
+        //cancelAlarm(42);
+
     }
 
 
@@ -96,11 +105,31 @@ public class Ringer extends Activity  {
             tb.setTextOn(texty + "\nOn");
             tb.setTextOff(texty + "\nOff");
             tb.setTextColor(Color.WHITE);
+
+            //set default alarms on
+            int d = 0;
+            while ( (sectionList[i].getDays())[d] != 0   ){
+                int day = (sectionList[i].getDays())[d++];
+                int mode = 0;
+                int h = sectionList[i].getStartHour();
+                int m = sectionList[i].getStartMinute();
+                int sid = sectionList[i].getStartID(day);
+                scheduleAlarm(mode, day, h, m, sid);
+                mode = 2;
+                h = sectionList[i].getEndHour();
+                m = sectionList[i].getEndMinute();
+                sid = sectionList[i].getEndID(day);
+                scheduleAlarm(mode, day, h, m, sid);
+            }
+
+
+
+
             tb.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View arg0) {
-                    // TODO Auto-generated method stub
+
                     int id = arg0.getId(); // you get ID of your dynamic button
                     boolean on = ((ToggleButton) arg0).isChecked();
 
@@ -108,8 +137,35 @@ public class Ringer extends Activity  {
 
                     if (on){
                         texty = "Schedule On";
+                        //Set schedule
+                        int d = 0;
+
+                        while ( (sectionList[id].getDays())[d] != 0   ){
+                            int day = (sectionList[id].getDays())[d++];
+                            int mode = 0;
+                            int h = sectionList[id].getStartHour();
+                            int m = sectionList[id].getStartMinute();
+                            int sid = sectionList[id].getStartID(day);
+                            scheduleAlarm(mode, day, h, m, sid);
+                            mode = 2;
+                            h = sectionList[id].getEndHour();
+                            m = sectionList[id].getEndMinute();
+                            sid = sectionList[id].getEndID(day);
+                            scheduleAlarm(mode, day, h, m, sid);
+                        }
+
+
                     }else {
+                        int d = 0;
+
                         texty = "Schedule Off";
+                        while ( (sectionList[id].getDays())[d] != 0   ){
+                            int day = (sectionList[id].getDays())[d++];
+                            cancelAlarm(sectionList[d].getStartID(d));
+                            cancelAlarm(sectionList[d].getEndID(d));
+                        }
+                        GoNormal();
+
                     }
                
 
@@ -122,6 +178,9 @@ public class Ringer extends Activity  {
                     AbsListView.LayoutParams.WRAP_CONTENT));
 
             mylayout.addView(tb);
+
+
+
 
         }
 
@@ -139,7 +198,7 @@ public class Ringer extends Activity  {
         }
 
 
-        sectionList[0].setClassNumber("7138");
+        sectionList[0].setClassNumber(7138);
         sectionList[0].setSectionNumber("03");
         sectionList[0].setSubject("CMSC");
         sectionList[0].setCourseNumber("313");
@@ -152,11 +211,12 @@ public class Ringer extends Activity  {
         tdays[1]=5;
         sectionList[0].setDays(tdays);
 
+
         for (int i = 0; i < 7; i++) {
             tdays[i] = 0;
         }
 
-        sectionList[1].setClassNumber("1142");
+        sectionList[1].setClassNumber(1142);
         sectionList[1].setSectionNumber("01");
         sectionList[1].setSubject("CMSC");
         sectionList[1].setCourseNumber("331");
@@ -174,7 +234,7 @@ public class Ringer extends Activity  {
         }
 
 
-        sectionList[2].setClassNumber("1144");
+        sectionList[2].setClassNumber(1144);
         sectionList[2].setSectionNumber("02");
         sectionList[2].setSubject("CMSC");
         sectionList[2].setCourseNumber("341");
@@ -185,13 +245,14 @@ public class Ringer extends Activity  {
         sectionList[2].setEndMinute(15);
         tdays[0]=2;
         tdays[1]=4;
+        tdays[2]=6;
         sectionList[2].setDays(tdays);
 
         for (int i = 0; i < 7; i++) {
             tdays[i] = 0;
         }
 
-        sectionList[3].setClassNumber("2663");
+        sectionList[3].setClassNumber(2663);
         sectionList[3].setSectionNumber("03");
         sectionList[3].setSubject("MATH");
         sectionList[3].setCourseNumber("221");
@@ -246,22 +307,99 @@ public class Ringer extends Activity  {
     }
 
 
-private void scheduleAlarm(){
-    long time =  new GregorianCalendar().getTimeInMillis()+ 10*1000;
+private void scheduleAlarm(int mode, int DOW, int hour, int minute, int ID){
+
+    Calendar calendar = new GregorianCalendar();
+    long repeater = 1000 * 60;// * 60 * 24 * 7;
+
+
+    if (calendar.get(Calendar.DAY_OF_WEEK)> DOW){
+        calendar.add(Calendar.WEEK_OF_MONTH,1);
+        calendar.set(Calendar.DAY_OF_WEEK, DOW);
+    } else {
+        calendar.set(Calendar.DAY_OF_WEEK, DOW);
+    }
+
+
+    calendar.set(Calendar.HOUR_OF_DAY, hour);
+    calendar.set(Calendar.MINUTE, minute);
+    calendar.set(Calendar.SECOND,0);
+
+    long time = calendar.getTimeInMillis();
+
     Intent intentAlarm = new Intent(this, AlarmReceiver.class);
-    intentAlarm.putExtra("blah", "yep");
+    intentAlarm.putExtra("mode",mode);
+    intentAlarm.putExtra("blah","Alarm Set");
+
+    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,time,1000*60,
+            PendingIntent.getBroadcast(this, ID, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+
+
+
+
+
+}
+
+    private void cancelAlarm(int ID){
+
+        Intent intentAlarm = new Intent(this, AlarmReceiver.class);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(PendingIntent.getBroadcast(this, ID, intentAlarm,
+                PendingIntent.FLAG_CANCEL_CURRENT));
+    }
+
+
+/*
+private void scheduleAlarm(){
+    long time =  new GregorianCalendar().getTimeInMillis()+ 6*1000;
+    Intent intentAlarm = new Intent(this, AlarmReceiver.class);
+    Intent intentAlarm2 = new Intent(this, AlarmReceiver.class);
+
+    Calendar calendar = new GregorianCalendar();
+    //calendar.add(Calendar.WEEK_OF_MONTH,1);
+    calendar.set(Calendar.HOUR_OF_DAY, 22);
+    calendar.set(Calendar.MINUTE, 51);
+    calendar.set(Calendar.SECOND,0);
+    int year = calendar.get(calendar.DAY_OF_MONTH);
+
+    long testy = calendar.getTimeInMillis();
+
+
+
+    intentAlarm.putExtra("blah", "Intent1" );
+    intentAlarm2.putExtra("blah", "Intent2" );
+
     AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-    alarmManager.set(AlarmManager.RTC_WAKEUP,time,
+
+    String texty = "" + year;
+
+    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,time,10*1000,
             PendingIntent.getBroadcast(this, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
 
-    Toast.makeText(this, "Alarm Scheduled", Toast.LENGTH_LONG).show();
+    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,time+10*1000,10*1000,
+            PendingIntent.getBroadcast(this, 2, intentAlarm2, PendingIntent.FLAG_UPDATE_CURRENT));
+
+
+    //Toast.makeText(this, texty, Toast.LENGTH_LONG).show();
 
 }
 
+private void cancelAlarm(){
+    Intent intentAlarm = new Intent(this, AlarmReceiver.class);
+    intentAlarm.putExtra("blah", "Intent2" );
+    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
 
+    alarmManager.cancel(PendingIntent.getBroadcast(this, 2, intentAlarm,
+            PendingIntent.FLAG_UPDATE_CURRENT));
 
+    alarmManager.cancel(PendingIntent.getBroadcast(this, 1, intentAlarm,
+            PendingIntent.FLAG_UPDATE_CURRENT));
+}
+
+*/
 
 
 
@@ -277,3 +415,4 @@ private void scheduleAlarm(){
 
 
 }
+

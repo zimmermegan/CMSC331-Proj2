@@ -190,11 +190,11 @@ public class Section {
     }
 
     public int getStartID(int day){
-        return (day * 10000 + 1000 +classNumber);
+        return (day * 100000 + 10000 +classNumber);
     }
 
     public int getEndID(int day){
-        return (day * 10000 + classNumber);
+        return (day * 100000 + classNumber);
     }
 
 }

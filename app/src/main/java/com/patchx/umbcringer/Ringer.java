@@ -105,6 +105,26 @@ public class Ringer extends Activity  {
             tb.setTextOn(texty + "\nOn");
             tb.setTextOff(texty + "\nOff");
             tb.setTextColor(Color.WHITE);
+
+            //set default alarms on
+            int d = 0;
+            while ( (sectionList[i].getDays())[d] != 0   ){
+                int day = (sectionList[i].getDays())[d++];
+                int mode = 0;
+                int h = sectionList[i].getStartHour();
+                int m = sectionList[i].getStartMinute();
+                int sid = sectionList[i].getStartID(day);
+                scheduleAlarm(mode, day, h, m, sid);
+                mode = 2;
+                h = sectionList[i].getEndHour();
+                m = sectionList[i].getEndMinute();
+                sid = sectionList[i].getEndID(day);
+                scheduleAlarm(mode, day, h, m, sid);
+            }
+
+
+
+
             tb.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -117,8 +137,35 @@ public class Ringer extends Activity  {
 
                     if (on){
                         texty = "Schedule On";
+                        //Set schedule
+                        int d = 0;
+
+                        while ( (sectionList[id].getDays())[d] != 0   ){
+                            int day = (sectionList[id].getDays())[d++];
+                            int mode = 0;
+                            int h = sectionList[id].getStartHour();
+                            int m = sectionList[id].getStartMinute();
+                            int sid = sectionList[id].getStartID(day);
+                            scheduleAlarm(mode, day, h, m, sid);
+                            mode = 2;
+                            h = sectionList[id].getEndHour();
+                            m = sectionList[id].getEndMinute();
+                            sid = sectionList[id].getEndID(day);
+                            scheduleAlarm(mode, day, h, m, sid);
+                        }
+
+
                     }else {
+                        int d = 0;
+
                         texty = "Schedule Off";
+                        while ( (sectionList[id].getDays())[d] != 0   ){
+                            int day = (sectionList[id].getDays())[d++];
+                            cancelAlarm(sectionList[d].getStartID(d));
+                            cancelAlarm(sectionList[d].getEndID(d));
+                        }
+                        GoNormal();
+
                     }
                
 
@@ -198,6 +245,7 @@ public class Ringer extends Activity  {
         sectionList[2].setEndMinute(15);
         tdays[0]=2;
         tdays[1]=4;
+        tdays[2]=6;
         sectionList[2].setDays(tdays);
 
         for (int i = 0; i < 7; i++) {
@@ -298,7 +346,7 @@ private void scheduleAlarm(int mode, int DOW, int hour, int minute, int ID){
         Intent intentAlarm = new Intent(this, AlarmReceiver.class);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(PendingIntent.getBroadcast(this, ID, intentAlarm,
-                PendingIntent.FLAG_UPDATE_CURRENT));
+                PendingIntent.FLAG_CANCEL_CURRENT));
     }
 
 

@@ -20,13 +20,13 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         if (mode == 0){
             audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-            Toast.makeText(context, "SILENT", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "SILENT", Toast.LENGTH_LONG).show();
         } else if (mode == 1){
             audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-            Toast.makeText(context, "VIBRATE", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "VIBRATE", Toast.LENGTH_LONG).show();
         } else if (mode == 2){
             audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-            Toast.makeText(context, "NORMAL", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "NORMAL", Toast.LENGTH_LONG).show();
         }
 
         //String texty = intent.getStringExtra("blah");

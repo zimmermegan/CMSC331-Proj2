@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -131,6 +132,9 @@ public class Ringer extends Activity  {
 
                     int id = arg0.getId(); // you get ID of your dynamic button
                     boolean on = ((ToggleButton) arg0).isChecked();
+
+                    MediaPlayer clicker = MediaPlayer.create(com.patchx.umbcringer.Ringer.this, R.raw.click);
+                    clicker.start();
 
                     String texty;
 

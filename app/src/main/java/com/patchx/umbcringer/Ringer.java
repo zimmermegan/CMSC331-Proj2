@@ -19,6 +19,8 @@ import android.widget.ToggleButton;
 //import com.patchx.umbcringer.AlarmReceiver;
 
 //import java.lang.reflect.Array;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 
 import java.util.Date;
@@ -75,9 +77,6 @@ public class Ringer extends Activity  {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
 
 
@@ -271,7 +270,9 @@ public class Ringer extends Activity  {
 
     }
 
+    private void saveState(){
 
+    }
 
 
     public void GoSilent() {
@@ -305,6 +306,7 @@ public class Ringer extends Activity  {
         AudioManager audioManager = (AudioManager) getBaseContext().getSystemService(Context.AUDIO_SERVICE);
         audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
     }
+
 
 
 private void scheduleAlarm(int mode, int DOW, int hour, int minute, int ID){

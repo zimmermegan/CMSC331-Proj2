@@ -2,6 +2,7 @@ package com.patchx.umbcringer;
 
 
 
+
 public class Section {
     private int classNumber;
     private String sectionNumber;
@@ -13,6 +14,7 @@ public class Section {
     private int endHour;
     private int endMinute;
     private int [] days = new int[7];
+
 
 
 

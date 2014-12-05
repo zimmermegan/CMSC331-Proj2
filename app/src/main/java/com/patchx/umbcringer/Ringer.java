@@ -29,7 +29,7 @@ import java.util.GregorianCalendar;
 
 public class Ringer extends Activity  {
 
-//Git
+
     private int ringerMode;
     private int sections = 4;
     private Section [] sectionList = new Section[sections];

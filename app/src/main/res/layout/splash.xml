@@ -17,7 +17,14 @@
         android:id="@+id/textView"
         android:textAlignment="center"
         android:textColor="#fd030303"
-        android:gravity="center" />
+        android:gravity="center"
+        android:singleLine="false"
+        android:shadowColor="#a86f6f6f"
+        android:password="false" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></FrameLayout>
 
     <TextView
         android:layout_width="fill_parent"

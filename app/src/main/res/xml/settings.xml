@@ -12,6 +12,8 @@
         android:summary="@string/pref_password_summary"
         android:key="prefPassword"/>
 
+    <Preference android:layout="@layout/layout_buttons" android:key="loginButtons"></Preference>
+
 </PreferenceCategory>
 
   //need to add a password component

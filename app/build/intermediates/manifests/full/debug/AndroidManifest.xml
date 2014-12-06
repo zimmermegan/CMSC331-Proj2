@@ -39,6 +39,11 @@
         </activity>
 
         <receiver android:name="com.patchx.umbcringer.AlarmReceiver" />
+
+        <activity
+            android:name="com.patchx.umbcringer.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>

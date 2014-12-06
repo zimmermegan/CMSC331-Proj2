@@ -11,11 +11,13 @@
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="156dp"
+        android:layout_height="250dp"
         android:textSize="40sp"
         android:text="@string/activity_splash"
         android:id="@+id/textView"
-        android:gravity="center_horizontal|top" />
+        android:textAlignment="center"
+        android:textColor="#fd030303"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="fill_parent"

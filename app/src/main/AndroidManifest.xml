@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.patchx.umbcringer" >
-
     //Permissions
+
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
@@ -11,8 +11,6 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
-
         //Splash Screen
         <activity
             android:name="com.patchx.umbcringer.SplashScreen"
@@ -23,24 +21,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         //Main activity
         <activity
             android:name="com.patchx.umbcringer.MainActivity"
             android:label="@string/app_name"
-            android:noHistory="true">
+            android:noHistory="true" >
         </activity>
-
-
         //Ringer
         <activity
             android:name="com.patchx.umbcringer.Ringer"
             android:label="@string/title_activity_ringer" >
         </activity>
 
-        <receiver android:name=".AlarmReceiver"/>
+        <receiver android:name="com.patchx.umbcringer.AlarmReceiver" />
 
+        <activity
+            android:name="com.patchx.umbcringer.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>

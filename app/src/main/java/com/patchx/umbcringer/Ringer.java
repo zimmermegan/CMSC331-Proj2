@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,8 @@ import android.widget.ToggleButton;
 //import com.patchx.umbcringer.AlarmReceiver;
 
 //import java.lang.reflect.Array;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 
 import java.util.Date;
@@ -84,9 +87,6 @@ public class Ringer extends Activity  {
     }
 
 
-
-
-
     public void PopulateButtons() {
 
         ViewGroup mylayout = (ViewGroup) findViewById(R.id.ringlayout);
@@ -139,10 +139,13 @@ public class Ringer extends Activity  {
                     int id = arg0.getId(); // you get ID of your dynamic button
                     boolean on = ((ToggleButton) arg0).isChecked();
 
-                    String texty;
+                    MediaPlayer clicker = MediaPlayer.create(com.patchx.umbcringer.Ringer.this, R.raw.click);
+                    clicker.start();
+
+                    //String texty;
 
                     if (on){
-                        texty = "Schedule On";
+                        //texty = "Schedule On";
                         //Set schedule
                         int d = 0;
 
@@ -164,7 +167,7 @@ public class Ringer extends Activity  {
                     }else {
                         int d = 0;
 
-                        texty = "Schedule Off";
+                        //texty = "Schedule Off";
                         while ( (sectionList[id].getDays())[d] != 0   ){
                             int day = (sectionList[id].getDays())[d++];
                             cancelAlarm(sectionList[d].getStartID(d));
@@ -175,7 +178,7 @@ public class Ringer extends Activity  {
                     }
                
 
-                    Toast.makeText(getApplicationContext(),texty , Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),texty , Toast.LENGTH_SHORT).show();
         }
                                 });
 
@@ -277,7 +280,9 @@ public class Ringer extends Activity  {
 
     }
 
+    private void saveState(){
 
+    }
 
 
     public void GoSilent() {
@@ -311,6 +316,7 @@ public class Ringer extends Activity  {
         AudioManager audioManager = (AudioManager) getBaseContext().getSystemService(Context.AUDIO_SERVICE);
         audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
     }
+
 
 
 private void scheduleAlarm(int mode, int DOW, int hour, int minute, int ID){

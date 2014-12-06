@@ -136,10 +136,10 @@ public class Ringer extends Activity  {
                     MediaPlayer clicker = MediaPlayer.create(com.patchx.umbcringer.Ringer.this, R.raw.click);
                     clicker.start();
 
-                    String texty;
+                    //String texty;
 
                     if (on){
-                        texty = "Schedule On";
+                        //texty = "Schedule On";
                         //Set schedule
                         int d = 0;
 
@@ -161,7 +161,7 @@ public class Ringer extends Activity  {
                     }else {
                         int d = 0;
 
-                        texty = "Schedule Off";
+                        //texty = "Schedule Off";
                         while ( (sectionList[id].getDays())[d] != 0   ){
                             int day = (sectionList[id].getDays())[d++];
                             cancelAlarm(sectionList[d].getStartID(d));
@@ -172,7 +172,7 @@ public class Ringer extends Activity  {
                     }
                
 
-                    Toast.makeText(getApplicationContext(),texty , Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),texty , Toast.LENGTH_SHORT).show();
         }
                                 });
 

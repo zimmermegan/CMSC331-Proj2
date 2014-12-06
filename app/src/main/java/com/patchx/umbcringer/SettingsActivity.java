@@ -25,6 +25,7 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+import android.graphics.Color;
 
 
 import java.util.List;
@@ -60,6 +61,14 @@ public class SettingsActivity extends PreferenceActivity {
 
         addPreferencesFromResource(R.xml.settings);
         updatePreferenceSummaries();
+
+        //getListView().setBackgroundColor(Color.TRANSPARENT);
+
+        //getListView().setCacheColorHint(Color.TRANSPARENT);
+
+        //getListView().setBackgroundColor(Color.rgb(222,219,47));
+
+
 
         //setupSimplePreferencesScreen();
     }

@@ -78,9 +78,9 @@ public class SettingsActivity extends PreferenceActivity {
         String password = test.getText().toString();
 
         if(password.length() <= 1){
-            test.setSummary("Password not set!");
+            test.setSummary("Password is not set");
         } else {
-            test.setSummary("Password: " + password);
+            test.setSummary("Password is set");
         }
     }
 

@@ -9,6 +9,8 @@
         android:layout_weight="5"
         android:layout_height="wrap_content"
         android:id="@+id/loginButton"
-        android:layout_gravity="left"></Button>
+        android:layout_gravity="left"
+        android:onClick="run"></Button>
+
 
 </LinearLayout>

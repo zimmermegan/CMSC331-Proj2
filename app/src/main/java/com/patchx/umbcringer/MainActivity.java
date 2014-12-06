@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -21,15 +22,24 @@ import com.patchx.umbcringer.Section;
 
 public class MainActivity extends Activity {
 
+    /*public TextView user_name ;
+    public TextView pword;*/
 
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String prefUsername = "user_nameKey";
+    public static final String prefPassword = "passwordKey";
+
+    public static SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         Intent intent = new Intent(this, Ringer.class);
         startActivity(intent);
+
 
 
         //ringer = new Ringer(savedInstanceState);
@@ -59,6 +69,9 @@ public class MainActivity extends Activity {
     }
 
 
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -78,12 +91,12 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-
-            return true;
+           return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     public void onToggleClicked(View view) {
         // Is the toggle on?

@@ -6,12 +6,14 @@ package com.patchx.umbcringer;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.util.Log;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -21,6 +23,8 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
 
 
 import java.util.List;
@@ -47,14 +51,37 @@ public class SettingsActivity extends PreferenceActivity {
     private static final boolean ALWAYS_SIMPLE_PREFS = false;
 
 
+
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         //super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.settings);
+        updatePreferenceSummaries();
 
         //setupSimplePreferencesScreen();
+    }
+
+    private void updatePreferenceSummaries() {
+        EditTextPreference test = (EditTextPreference)findPreference("prefUsername");
+        String username = test.getText().toString();
+
+        if(username.length() <= 1){
+            test.setSummary("Username not set!");
+        } else {
+            test.setSummary("Currently logged in as " + username);
+        }
+
+        test = (EditTextPreference)findPreference("prefPassword");
+        String password = test.getText().toString();
+
+        if(password.length() <= 1){
+            test.setSummary("Password not set!");
+        } else {
+            test.setSummary("Password: " + password);
+        }
     }
 
     /**
@@ -232,6 +259,9 @@ public class SettingsActivity extends PreferenceActivity {
      * This fragment shows notification preferences only. It is used when the
      * activity is showing a two-pane settings UI.
      */
+
+
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static class NotificationPreferenceFragment extends PreferenceFragment {
         @Override
@@ -243,6 +273,23 @@ public class SettingsActivity extends PreferenceActivity {
 
                 @Override
                 public boolean onPreferenceClick(Preference arg0) {
+
+                    Log.i("test", "Test");
+
+                    EditTextPreference test = (EditTextPreference)findPreference("prefUsername");
+                    String username = test.getText().toString();
+                    test.setSummary("Currently logged in as "+username);
+
+                    if (MainActivity.sharedpreferences.contains(MainActivity.prefUsername))
+                    {
+
+                        //user_name.setText(sharedpreferences.getString(prefUsername, ""));
+
+                    }
+                    if (MainActivity.sharedpreferences.contains(MainActivity.prefPassword)) {
+                        //pword.setText(sharedpreferences.getString(prefPassword, ""));
+                        //return true;
+                    }
                     Log.i("preferencesButton", "Login Button Pushed");
                     return true;
                 }
@@ -276,5 +323,24 @@ public class SettingsActivity extends PreferenceActivity {
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("sync_frequency"));
         }
+    }
+
+    public void run(View view){
+        updatePreferenceSummaries();
+
+        SharedPreferences sharedpreferences = getSharedPreferences("sharedpreferences", 0);
+
+        EditTextPreference user_name = (EditTextPreference) findPreference("prefUsername");
+        EditTextPreference pword = (EditTextPreference) findPreference("prefPassword");
+
+        String un  = user_name.getText().toString();
+        String pw  = pword.getText().toString();
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("prefUsername", un);
+        editor.putString("prefPassword", pw);
+
+
+        editor.commit();
+
     }
 }

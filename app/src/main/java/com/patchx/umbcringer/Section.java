@@ -2,6 +2,7 @@ package com.patchx.umbcringer;
 
 
 
+
 public class Section {
     private int classNumber;
     private String sectionNumber;
@@ -13,6 +14,7 @@ public class Section {
     private int endHour;
     private int endMinute;
     private int [] days = new int[7];
+
 
 
 
@@ -188,11 +190,11 @@ public class Section {
     }
 
     public int getStartID(int day){
-        return (day * 10000 + 1000 +classNumber);
+        return (day * 100000 + 10000 +classNumber);
     }
 
     public int getEndID(int day){
-        return (day * 10000 + classNumber);
+        return (day * 100000 + classNumber);
     }
 
 }

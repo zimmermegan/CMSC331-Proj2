@@ -6,6 +6,12 @@
         android:title="@string/pref_user_name"
         android:summary="@string/pref_user_name_summary"
         android:key="prefUsername"/>
+
+    <EditTextPreference
+        android:title="@string/pref_password"
+        android:summary="@string/pref_password_summary"
+        android:key="prefPassword"/>
+
 </PreferenceCategory>
 
   //need to add a password component

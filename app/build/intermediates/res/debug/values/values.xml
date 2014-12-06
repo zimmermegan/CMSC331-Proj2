@@ -51,6 +51,12 @@
     <string name="pref_header_data_sync">Data &amp; sync</string>
     <string name="pref_header_general">General</string>
     <string name="pref_header_notifications">Notifications</string>
+    <!-- From: file:/Users/gracekathrynchandler/UBM-MetagenomicsProject/git/CMSC331-Proj2/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="pref_password">Set password</string>
+    <string name="pref_password_summary">Set your password</string>
+    <!-- From: file:/Users/gracekathrynchandler/UBM-MetagenomicsProject/git/CMSC331-Proj2/app/src/main/res/values/strings_activity_settings.xml -->
+    <eat-comment/>
     <string name="pref_ringtone_silent">Silent</string>
     <!-- From: file:/Users/gracekathrynchandler/UBM-MetagenomicsProject/git/CMSC331-Proj2/app/src/main/res/values/strings.xml -->
     <eat-comment/>

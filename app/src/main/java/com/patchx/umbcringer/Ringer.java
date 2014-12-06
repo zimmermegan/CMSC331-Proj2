@@ -70,12 +70,18 @@ public class Ringer extends Activity  {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            openSettings();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void  openSettings() {
+
+        Intent settings_intent = new Intent(Ringer.this, SettingsActivity.class);
+        startActivity(settings_intent);
+    }
 
 
 

@@ -3,12 +3,15 @@ package com.patchx.umbcringer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
@@ -27,6 +30,7 @@ public class MainActivity extends Activity {
 
         Intent intent = new Intent(this, Ringer.class);
         startActivity(intent);
+
 
         //ringer = new Ringer(savedInstanceState);
 
@@ -62,6 +66,9 @@ public class MainActivity extends Activity {
         return true;
     }
 
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -71,6 +78,7 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 
@@ -94,6 +102,8 @@ public class MainActivity extends Activity {
                 //GoVibrate();
         }*/
     }
+
+
 
     }
 

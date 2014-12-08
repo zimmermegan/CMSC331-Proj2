@@ -21,6 +21,7 @@
     <string name="pref_user_name_summary">Currently logged in as: </string>
     <string name="pref_password_summary">Password: </string>
 
+
     <string name="pref_user_profile">User Profile</string>
     <string name="pref_update_setting">Update Settings</string>
     <string name="menu_settings">"Settings"</string>

@@ -4,14 +4,15 @@
     android:layout_width="fill_parent"
     android:weightSum="10"
     android:baselineAligned="false" android:orientation="horizontal">
-    <Button android:text="Sync Account"
-        android:layout_width="fill_parent"
+
+    <Button android:text="@string/syncbttn"
+        android:layout_width="0dp"
         android:layout_weight="5"
         android:layout_height="wrap_content"
         android:id="@+id/loginButton"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:onClick="run"
-        android:textColor="#ffffffff"></Button>
+        android:textColor="#ffffffff"/>
 
 
 </LinearLayout>

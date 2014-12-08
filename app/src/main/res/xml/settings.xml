@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-<PreferenceCategory android:title="@string/pref_user_profile" >
+<PreferenceCategory android:title="@string/pref_user_profile"
+    >
 
     <EditTextPreference
         android:title="@string/pref_user_name"
@@ -11,25 +12,21 @@
 
     <EditTextPreference
         android:title="@string/pref_password"
+
+
         android:summary="Password is set"
         android:inputType="textPassword"
         android:key="prefPassword"/>
 
 
-
-    <Preference android:layout="@layout/layout_buttons" android:key="loginButtons"></Preference>
-
 </PreferenceCategory>
 
-  //need to add a password component
-    //change next portion to sync rather than send report
+
 <PreferenceCategory android:title="@string/pref_update_setting" >
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="prefSendReport"
-        android:summary="@string/pref_send_report_summary"
-        android:title="@string/pref_send_report" >
-    </CheckBoxPreference>
+    <Preference
+        android:layout="@layout/layout_buttons"
+        android:key="loginButtons">
+    </Preference>
 
 </PreferenceCategory>
 

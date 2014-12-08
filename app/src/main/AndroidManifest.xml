@@ -39,6 +39,7 @@
         //Settings menu
         <activity
             android:name="com.patchx.umbcringer.SettingsActivity"
+            android:theme="@style/SettingStyle"
             android:label="@string/title_activity_settings" >
         </activity>
 

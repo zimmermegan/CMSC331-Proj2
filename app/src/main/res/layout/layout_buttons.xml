@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/loginButton"
         android:layout_gravity="left"
-        android:onClick="run"></Button>
+        android:onClick="run"
+        android:textColor="#ffffffff"></Button>
 
 
 </LinearLayout>

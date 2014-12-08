@@ -99,7 +99,7 @@ public class Ringer extends Activity  {
             tb.setChecked(true);
             tb.setId(i);
             String texty;
-                        texty = sectionList[i].getSubject()
+                    texty = sectionList[i].getSubject()
                     + "-"
                     + sectionList[i].getCourseNumber()
                     +"\n"

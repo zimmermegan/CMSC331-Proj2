@@ -9,13 +9,17 @@
 
     </style>
 
-    <style name="SettingStyle" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:background">#000000</item>
+    <style name="SettingStyle" parent="android:Theme.Holo.Dialog">
+        <item name="android:listViewStyle">@style/divide</item>
+        <item name="android:background">#4D4D4D</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textColorSecondary">#FFFFFF</item>
     </style>
 
-
+    <style name="divide">
+        <item name="android:divider">#000000</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
 
 
 

@@ -3,7 +3,8 @@
     android:layout_height="wrap_content"
     android:layout_width="fill_parent"
     android:weightSum="10"
-    android:baselineAligned="false" android:orientation="horizontal">
+    android:baselineAligned="false" android:orientation="horizontal"
+    >
 
     <Button android:text="@string/syncbttn"
         android:layout_width="0dp"

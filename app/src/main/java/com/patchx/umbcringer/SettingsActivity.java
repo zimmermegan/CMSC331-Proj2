@@ -1,3 +1,13 @@
+/**************************************************************
+ * File:    SettingsActivity.java
+ * Project: CMSC 331 - Project 2
+ * Author : Grace Chandler, Frank Zastawnik
+ * Date   : 10-December-2014
+ * Section: Lecture-01
+ * E-mail:  frankz2@umbc.edu
+ *
+ * This is where settings are checked and set.
+ *************************************************************/
 package com.patchx.umbcringer;
 
 /**
@@ -77,24 +87,32 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     private void updatePreferenceSummaries() {
-        EditTextPreference test = (EditTextPreference)findPreference("prefUsername");
-        String username = test.getText().toString();
 
-        if(username.length() <= 1){
-            test.setSummary("Username not set!");
-        } else {
-            test.setSummary("Currently logged in as " + username);
-        }
 
-        test = (EditTextPreference)findPreference("prefPassword");
-        String password = test.getText().toString();
+        EditTextPreference test = (EditTextPreference) findPreference("prefUsername");
 
-        if(password.length() <= 1){
-            test.setSummary("Password is not set");
-        } else {
-            test.setSummary("Password is set");
-        }
-    }
+
+
+            String username = test.getText();
+
+                // If the username is null we know it hasn't been set
+                if (username == null) {
+                    test.setSummary("Username not set!");
+                } else {
+                    test.setSummary("Currently logged in as " + username);
+                }
+
+            test = (EditTextPreference) findPreference("prefPassword");
+            String password = test.getText();
+
+                //If the password is null it hasn't been set.
+                if (password == null) {
+                    test.setSummary("Password is not set");
+                } else {
+                    test.setSummary("Password is set");
+                }
+            }
+
 
     /**
      * Shows the simplified settings UI if the device configuration if the

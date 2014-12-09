@@ -1,19 +1,29 @@
+/**************************************************************
+ * File:    Section.java
+ * Project: CMSC 331 - Project 2
+ * Author : Frank Zastawnik
+ * Date   : 10-December-2014
+ * Section: Lecture-01
+ * E-mail:  frankz2@umbc.edu
+ *
+ * This holds the information about each section.
+ *************************************************************/
 package com.patchx.umbcringer;
 
 
 
 
 public class Section {
-    private int classNumber;
-    private String sectionNumber;
-    private String subject;
-    private String courseNumber;
-    private String description;
-    private int startHour;
-    private int startMinute;
-    private int endHour;
-    private int endMinute;
-    private int [] days = new int[7];
+    private int classNumber;            // The registrar's number for the section eg 5423
+    private String sectionNumber;       // The section of the class eg. 03
+    private String subject;             // The subject. eg CMSC
+    private String courseNumber;        // The course number eg 201
+    private String description;         // The description of the course.
+    private int startHour;              // The starting hour (24 hour format)
+    private int startMinute;            // The starting minute
+    private int endHour;                // The ending hour (24 hour format)
+    private int endMinute;              // The ending minute
+    private int [] days = new int[7];   // Days of the week the class meets.  1= Sunday
 
 
 
@@ -28,7 +38,7 @@ public class Section {
 
     public void setDays(int[] days) {
 
-
+        // Do a deep copy of the array
         for (int i = 0; i < days.length; i++) {
             this.days[i] = days[i];
         }
@@ -106,10 +116,14 @@ public class Section {
         this.endMinute = endMinute;
     }
 
+
+    // This returns a formated string specifically for the buttons to display the
+    // Time and day information for a section.
     public String getTimes(){
 
         String sh, sm, eh, em, timey, smeridian, emeridian, tdays;
 
+        // Deal with 24hour to 12hour conversions
         if (startHour > 12){
             sh = "" + (startHour - 12);
             smeridian = "PM";
@@ -120,13 +134,14 @@ public class Section {
             sh = "" + startHour;
             smeridian = "AM";
         }
-
+        //Pad with a leading 0
         if (startMinute < 10){
             sm = "0" + startMinute;
         }   else {
             sm = "" + startMinute;
         }
 
+        // Deal with 24hour to 12hour conversions
         if (endHour > 12){
             eh = "" + (endHour - 12);
             emeridian = "PM";
@@ -137,7 +152,7 @@ public class Section {
             eh = "" + endHour;
             emeridian = "AM";
         }
-
+        //Pad with a leading 0
         if (endMinute < 10) {
             em = "0" + endMinute;
         } else {
@@ -146,6 +161,7 @@ public class Section {
 
         tdays = "";
 
+        // Get short versions of the days
         for (int i = 0; i < days.length; i ++) {
             switch (days[i]) {
                 case 0:
@@ -181,6 +197,7 @@ public class Section {
 
         }
 
+        // Put it all together
         timey = sh + ":" + sm + smeridian +" - " + eh + ":" + em + emeridian + " " + tdays;
 
 
@@ -189,6 +206,8 @@ public class Section {
 
     }
 
+    // These generate the AlarmManager IDs used so they are predictable if we need to cancel or
+    // update.
     public int getStartID(int day){
         return (day * 100000 + 10000 +classNumber);
     }

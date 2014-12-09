@@ -1,3 +1,17 @@
+/**************************************************************
+ * File:    SplashScreen.java
+ * Project: CMSC 331 - Project 2
+ * Author : Frank Zastawnik
+ * Date   : 10-December-2014
+ * Section: Lecture-01
+ * E-mail:  frankz2@umbc.edu
+ *
+ * This handles creating the splash screen then calls the main
+ * activity after two seconds.  Eventually this will also be
+ * shown as the app starts and network calls are being made to
+ * fetch data.
+ *************************************************************/
+
 package com.patchx.umbcringer;
 
 import android.app.Activity;
@@ -26,12 +40,8 @@ public class SplashScreen extends Activity {
 
             @Override
             public void run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
                 Intent i = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(i);
-
-                // close this activity
                 finish();
             }
         }, SPLASH_TIME_OUT);

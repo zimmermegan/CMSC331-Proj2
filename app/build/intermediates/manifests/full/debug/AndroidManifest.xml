@@ -40,7 +40,8 @@
         //Settings menu
         <activity
             android:name="com.patchx.umbcringer.SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/title_account_settings"
+            android:theme="@style/SettingStyle" >
         </activity>
 
         <receiver android:name="com.patchx.umbcringer.AlarmReceiver" />

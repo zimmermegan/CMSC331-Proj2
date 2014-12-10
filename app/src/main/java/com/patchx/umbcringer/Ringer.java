@@ -72,6 +72,7 @@ public class Ringer extends Activity  {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        //opening settings
         if (id == R.id.action_settings) {
             openSettings();
             return true;

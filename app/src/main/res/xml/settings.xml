@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- Created by Grace Chandler -->
+<!-- This contains the xml formatting for the settings menu -->
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+<!-- Creates a user preferences setting menu category -->
 <PreferenceCategory android:title="@string/pref_user_profile">
 
-
+    <!-- Username -->
     <EditTextPreference
         android:title="@string/pref_user_name"
         android:summary="@string/pref_user_name_summary"
         android:key="prefUsername"/>
 
+    <!--Password -->
+    <!-- make sure it is obfuscated -->
     <EditTextPreference
         android:title="@string/pref_password"
         android:summary="Password is set"
         android:inputType="textPassword"
         android:key="prefPassword"/>
 
+    <!-- Show the sync account button -->
     <Preference
         android:layout="@layout/layout_buttons"
         android:key="loginButtons">

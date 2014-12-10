@@ -1,54 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffce0b"
+    android:background="@drawable/splash"
     android:orientation="vertical"
-    android:theme="@style/AppTheme"
-   >
-
-
+    android:weightSum="1">
 
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="250dp"
+        android:layout_height="0dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/app_name"
         android:textSize="40sp"
-        android:text="@string/activity_splash"
         android:id="@+id/textView"
-        android:textAlignment="center"
-        android:textColor="#fd030303"
-        android:gravity="center"
-        android:singleLine="false"
-        android:shadowColor="#a86f6f6f"
-        android:password="false"
-        style="@android:style/Theme.Light.NoTitleBar"
-        android:textAppearance="@android:color/darker_gray" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></FrameLayout>
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.40" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:text="@string/Frank"
+        android:textSize="30sp"
         android:id="@+id/textView2"
-        android:gravity="center_horizontal|top" />
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal" />
+
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:text="@string/Grace"
-        android:id="@+id/textView4"
-        android:gravity="center_horizontal|top" />
-
+        android:textSize="30sp"
+        android:id="@+id/textView3"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal" />
 
 </LinearLayout>
-
-
-
 <!-- From: file:/Users/gracekathrynchandler/UBM-MetagenomicsProject/git/CMSC331-Proj2/app/src/main/res/layout/splash.xml -->

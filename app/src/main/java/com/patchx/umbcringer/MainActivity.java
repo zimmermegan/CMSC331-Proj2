@@ -1,3 +1,15 @@
+/**************************************************************
+ * File:    MainActivity.java
+ * Project: CMSC 331 - Project 2
+ * Author : Frank Zastawnik, Grace Chandler
+ * Date   : 10-December-2014
+ * Section: Lecture-01
+ * E-mail:  frankz2@umbc.edu
+ *
+ * This activy is called from splash and will, in the future,
+ * check the configuration and offer a screen.  It calls the
+ * Ringer class activity.
+ *************************************************************/
 package com.patchx.umbcringer;
 
 import android.app.Activity;
@@ -37,51 +49,18 @@ public class MainActivity extends Activity {
 
         //these get the settings to be stored in SharedPrefs eventually
         setContentView(R.layout.activity_main);
+        // Get the preferences
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
+        // Start the ringer activity
         Intent intent = new Intent(this, Ringer.class);
         startActivity(intent);
-
-
-
-        //ringer = new Ringer(savedInstanceState);
-
-
-
-       /*
-        ToggleButton tb = (ToggleButton) this.findViewById(R.id.toggle1);
-
-        AudioManager audioManager = (AudioManager) getBaseContext().getSystemService(Context.AUDIO_SERVICE);
-        switch( audioManager.getRingerMode() ){
-            case AudioManager.RINGER_MODE_NORMAL:
-                tb.setText("Normal");
-                ringerMode = AudioManager.RINGER_MODE_NORMAL;
-                break;
-            case AudioManager.RINGER_MODE_SILENT:
-                tb.setText("Silent");
-                ringerMode = AudioManager.RINGER_MODE_SILENT;
-                break;
-            case AudioManager.RINGER_MODE_VIBRATE:
-                tb.setText("Vibrate");
-                ringerMode = AudioManager.RINGER_MODE_VIBRATE;
-                break;
-        }
-*/
-        //ringer.PopulateButtons();
     }
-
-
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
 
 
     @Override
@@ -100,23 +79,6 @@ public class MainActivity extends Activity {
     }
 
 
-    public void onToggleClicked(View view) {
-        // Is the toggle on?
-        boolean on = ((ToggleButton) view).isChecked();
-        AudioManager audioManager = (AudioManager) getBaseContext().getSystemService(Context.AUDIO_SERVICE);
-
-         //((ToggleButton) view).setText("Help");
-        //boolean on = (ToggleButton) findViewById(R.id.toggle1).isChecked();
-        /*
-        if (on) {
-           //GoSilent();
-        } else if (ringer.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
-                //GoNormal();
-            }
-        else {
-                //GoVibrate();
-        }*/
-    }
 
 
 

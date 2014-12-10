@@ -100,8 +100,9 @@ public class SettingsActivity extends PreferenceActivity {
         String username = test.getText();
 
         // If the username is null we know it hasn't been set
-        if (username == null) {
+        if (username == null || username.length() <= 1) {
             test.setSummary("Username not set!");
+            username = "";
         } else {
             test.setSummary("Currently logged in as " + username);
         }
@@ -110,7 +111,8 @@ public class SettingsActivity extends PreferenceActivity {
         String password = test.getText();
 
         //If the password is null it hasn't been set.
-        if (password == null) {
+        if (password == null || password.length() <= 1) {
+            password = "";
             test.setSummary("Password is not set");
         } else {
             test.setSummary("Password is set");
@@ -366,7 +368,6 @@ public class SettingsActivity extends PreferenceActivity {
      //this occurs when the button for sync account is pressed
     public void run(View view){
 
-        //updating shared prefs with username and pword
 
         updatePreferenceSummaries();
 
@@ -375,14 +376,15 @@ public class SettingsActivity extends PreferenceActivity {
         EditTextPreference user_name = (EditTextPreference) findPreference("prefUsername");
         EditTextPreference pword = (EditTextPreference) findPreference("prefPassword");
 
-        String un  = user_name.getText().toString();
-        String pw  = pword.getText().toString();
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString("prefUsername", un);
-        editor.putString("prefPassword", pw);
+        if(user_name != null && pword != null && sharedpreferences != null) {
+            String un = user_name.getText().toString();
+            String pw = pword.getText().toString();
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString("prefUsername", un);
+            editor.putString("prefPassword", pw);
 
 
-        editor.commit();
-
+            editor.commit();
+        }
     }
 }

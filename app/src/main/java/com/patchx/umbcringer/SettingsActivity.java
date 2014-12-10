@@ -377,8 +377,8 @@ public class SettingsActivity extends PreferenceActivity {
         EditTextPreference pword = (EditTextPreference) findPreference("prefPassword");
 
         if(user_name != null && pword != null && sharedpreferences != null) {
-            String un = user_name.getText().toString();
-            String pw = pword.getText().toString();
+            String un = user_name.getText();
+            String pw = pword.getText();
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString("prefUsername", un);
             editor.putString("prefPassword", pw);
